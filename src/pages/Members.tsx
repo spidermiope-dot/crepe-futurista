@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CourseModule from "@/components/CourseModule";
+import Testimonials from "@/components/Testimonials";
+import FloatingNav from "@/components/FloatingNav";
+import MobileNav from "@/components/MobileNav";
 import { ChefHat, Cookie, Users, DollarSign, LogOut, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { signOut, getCurrentUser } from "@/lib/supabase";
@@ -68,7 +71,7 @@ const Members = () => {
 
   return (
     <div 
-      className="min-h-screen relative"
+      className="min-h-screen relative pb-20 md:pb-0"
       style={{
         backgroundImage: `url(${backgroundAbstract})`,
         backgroundSize: 'cover',
@@ -82,6 +85,9 @@ const Members = () => {
       <div className="absolute top-20 left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
       <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+
+      <FloatingNav />
+      <MobileNav />
 
       <div className="relative z-10">
         {/* Header */}
@@ -106,7 +112,7 @@ const Members = () => {
         </header>
 
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-16 text-center">
+        <section className="container mx-auto px-4 pt-24 pb-16 text-center">
           <div className="max-w-4xl mx-auto space-y-6 animate-slide-in-up">
             <h2 className="text-5xl md:text-7xl font-bold gradient-text mb-4">
               Seu Curso de Crepes Completo
@@ -114,15 +120,18 @@ const Members = () => {
             <p className="text-xl md:text-2xl text-muted-foreground">
               Aprenda receitas incríveis, entre na comunidade e transforme sua paixão em negócio lucrativo
             </p>
-            <div className="flex justify-center gap-4 mt-8">
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
               <div className="glass-card px-6 py-3 rounded-full">
                 <span className="text-primary font-bold text-lg">4 Módulos</span>
               </div>
               <div className="glass-card px-6 py-3 rounded-full">
-                <span className="text-secondary font-bold text-lg">20+ Receitas</span>
+                <span className="text-secondary font-bold text-lg">50+ Receitas</span>
               </div>
               <div className="glass-card px-6 py-3 rounded-full">
                 <span className="text-accent font-bold text-lg">Comunidade VIP</span>
+              </div>
+              <div className="glass-card px-6 py-3 rounded-full">
+                <span className="text-primary font-bold text-lg">Suporte 24/7</span>
               </div>
             </div>
           </div>
@@ -134,7 +143,7 @@ const Members = () => {
             <div className="animate-slide-in-left">
               <CourseModule
                 title="Crepes Doces"
-                description="Receitas deliciosas de crepes doces: morango, chocolate, Nutella, doce de leite e muito mais!"
+                description="Domine a arte dos crepes doces com mais de 25 receitas exclusivas! Aprenda desde o básico até criações gourmet: crepes recheados com morangos frescos, Nutella, doce de leite, chocolate belga, frutas caramelizadas, cremes especiais e muito mais. Inclui técnicas de apresentação profissional, dicas de precificação e como criar seu próprio cardápio irresistível."
                 icon={Cookie}
                 image={crepeDoce}
                 onClick={() => handleModuleClick("Crepes Doces")}
@@ -145,7 +154,7 @@ const Members = () => {
             <div className="animate-slide-in-right">
               <CourseModule
                 title="Crepes Salgados"
-                description="Aprenda receitas profissionais de crepes salgados com recheios irresistíveis"
+                description="Receitas profissionais de crepes salgados que seus clientes vão adorar! Mais de 25 opções com recheios variados: frango, carne, camarão, vegetarianos, fit e muito mais. Aprenda técnicas de preparo em larga escala, conservação adequada dos ingredientes, combinações de sabores que vendem e como montar um cardápio balanceado entre clássicos e inovações."
                 icon={ChefHat}
                 image={crepeSalgado}
                 onClick={() => handleModuleClick("Crepes Salgados")}
@@ -155,8 +164,8 @@ const Members = () => {
 
             <div className="animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
               <CourseModule
-                title="Grupo WhatsApp"
-                description="Comunidade exclusiva com suporte, dicas, troca de experiências e networking"
+                title="Comunidade VIP"
+                description="Entre para o grupo exclusivo no WhatsApp com mais de 500 empreendedores do crepe! Receba suporte diário, tire dúvidas em tempo real, compartilhe experiências, participe de challenges mensais, tenha acesso a lives exclusivas com especialistas, networking para parcerias e um ambiente motivador para crescer junto. Nunca empreenda sozinho!"
                 icon={Users}
                 image={crepeMaking}
                 onClick={() => handleModuleClick("Grupo WhatsApp")}
@@ -167,7 +176,7 @@ const Members = () => {
             <div className="animate-slide-in-right" style={{ animationDelay: '0.2s' }}>
               <CourseModule
                 title="Ganhar Dinheiro"
-                description="Estratégias comprovadas para monetizar seus crepes e criar um negócio lucrativo"
+                description="Estratégias comprovadas de monetização e crescimento do seu negócio! Aprenda precificação correta, gestão financeira, marketing digital para crepes, como vender em eventos e feiras, delivery lucrativo, como montar uma operação de lanche noturno, parcerias estratégicas, técnicas de vendas que aumentam o ticket médio e um plano completo de 0 a R$10.000/mês."
                 icon={DollarSign}
                 image={businessMoney}
                 onClick={() => handleModuleClick("Ganhar Dinheiro")}
@@ -176,6 +185,9 @@ const Members = () => {
             </div>
           </div>
         </section>
+
+        {/* Testimonials */}
+        <Testimonials />
 
         {/* Footer */}
         <footer className="glass-card border-t border-border/50 mt-16">
